@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="184dp">
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="100dp"
+                android:layout_height="98dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/homenameee"
+                app:layout_constraintEnd_toStartOf="@+id/ethomenave"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="123dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:textColor="@color/teal_700"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/imageview"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="98dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/awaynameee"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/etawayyy"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/ethomenave"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/etawayyy"
+                app:layout_constraintStart_toEndOf="@+id/imageview"
+                app:layout_constraintTop_toBottomOf="@+id/result"
+                app:layout_constraintVertical_bias="0.089999974" />
+
+            <EditText
+                android:id="@+id/etawayyy"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/ethomenave"
+                app:layout_constraintTop_toBottomOf="@+id/result"
+                app:layout_constraintVertical_bias="0.089999974" />
+
+            <TextView
+                android:id="@+id/homenameee"
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ethomenave"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageview" />
+
+            <TextView
+                android:id="@+id/awaynameee"
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/etawayyy"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <Button
+                android:id="@+id/updatebt"
+                android:layout_width="95dp"
+                android:layout_height="37dp"
+                android:text="Update"
+                android:theme="@style/AppTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/awaynameee"
+                app:layout_constraintStart_toEndOf="@+id/homenameee"
+                app:layout_constraintTop_toBottomOf="@+id/ethomenave" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

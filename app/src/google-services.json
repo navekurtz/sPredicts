@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "264868287155",
+    "project_id": "spredicts-5698a",
+    "storage_bucket": "spredicts-5698a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264868287155:android:26dbac2e1c7b33572dd6c6",
+        "android_client_info": {
+          "package_name": "com.example.spredicts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264868287155-feuu36pe6jno6ck8l6eu3f89oqtpf518.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwcryTGcP4ubkQ7pdx8vVsunyR-kPYx6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264868287155-feuu36pe6jno6ck8l6eu3f89oqtpf518.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

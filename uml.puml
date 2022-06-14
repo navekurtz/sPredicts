@@ -1,0 +1,190 @@
+@startuml
+class com.example.spredicts.DBHelper {
+- {static} String DATABASENAME
+- {static} String TABLE_PREDICT
+- {static} int DATABASEVERSION
+- {static} String COLUMN_ID
+- {static} String COLUMN_HOME_PREDICT
+- {static} String COLUMN_AWAY_PREDICT
+- {static} String[] allColumns
+- {static} String CREATE_TABLE_USER
+- SQLiteDatabase database
++ <<Create>> DBHelper(Context)
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ Predict insert(Predict)
++ void deleteUser(com.example.spredicts.Predict)
++ void deleteById(long)
++ void update(Predict)
++ ArrayList<Predict> selectAll()
++ boolean doesDatabaseExist(Context,String)
++ Cursor getData()
+}
+class com.example.spredicts.ScoreFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+- TextView textView
++ <<Create>> ScoreFragment()
++ {static} ScoreFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.spredicts.HomeFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
++ ArrayList<Card> matchListScheduled
++ ArrayList<Card> matchListFinished
+- ArrayList<Card> match
+- RecyclerView recyclerView
+- DBHelper dbHelper
+- SQLiteDatabase sqLiteDatabase
+- ArrayList<Predict> Prelist
+- EditText etHome
+- EditText etAway
+- Button update
+~ BottomNavigationView bottomNavigationView
+~ Cache cache
+~ Network network
+- RequestQueue requestQueue
+~ Context thiscontext
++ <<Create>> HomeFragment()
++ {static} HomeFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- File getCacheDir()
++ void fetchMatches()
+}
+class com.example.spredicts.MatchAdapterFinished {
+- Context context
+- List<Card> matchList
+- TextView tvHome
+- DBHelper dbHelper
+- int count
++ <<Create>> MatchAdapterFinished(Context,List<Card>)
++ MatchHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MatchHolder,int)
++ int getItemCount()
++ int getCount()
+}
+class com.example.spredicts.MatchAdapterFinished.MatchHolder {
+~ TextView awayname
+~ ConstraintLayout constraintLayout
++ <<Create>> MatchHolder(View)
+}
+class com.example.spredicts.MatchAdapterScheduled {
+- Context context
+- List<Card> matchList
+- EditText etHome
+- EditText etAway
+- Button update
+- DBHelper dbHelper
++ <<Create>> MatchAdapterScheduled(Context,List<Card>)
++ MatchHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MatchHolder,int)
++ int getItemCount()
+}
+class com.example.spredicts.MatchAdapterScheduled.MatchHolder {
+~ TextView awayname
+~ ConstraintLayout constraintLayout
++ <<Create>> MatchHolder(View)
+}
+class com.example.spredicts.MainActivity {
+~ ViewPager viewPager
+# void onCreate(Bundle)
++ void logout(View)
+}
+class com.example.spredicts.MainActivity.AuthenticationPagerAdapter {
+- ArrayList<Fragment> fragmentList
++ <<Create>> AuthenticationPagerAdapter(FragmentManager)
++ Fragment getItem(int)
++ int getCount()
+~ void addFragmet(Fragment)
+}
+class com.example.spredicts.Card {
+- String result
+- int id
+- EditText homeEdit
++ <<Create>> Card(String,String,String,int,int,int)
++ String getResult()
++ String getHomename()
++ String getAwayname()
++ int getId()
++ int getHomeScore()
++ int getAwayScore()
++ void setResult(String)
++ void setHomename(String)
++ void setAwayname(String)
++ void setId(int)
++ void setHomeScore(int)
++ void setAwayScore(int)
+}
+class com.example.spredicts.LoginFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+- TextView Logintv
+- EditText LoginEmail
+- Button Loginb
+- FirebaseAuth fAuth
++ <<Create>> LoginFragment()
++ {static} LoginFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.spredicts.Predict {
+- long id
+- int homePredict
+- int awayPredict
++ <<Create>> Predict(long,int,int)
++ long getId()
++ void setId(long)
++ int getHomePredict()
++ void setHomePredict(int)
++ int getAwayPredict()
++ void setAwayPredict(int)
+}
+class com.example.spredicts.MainActivity2 {
+~ BottomNavigationView bottomNavigationView
+~ HomeFragment homeFragment
+~ ScoreFragment scoreFragment
+- NavigationBarView.OnItemSelectedListener mOnNavigationItemSelectedListener
+# void onCreate(Bundle)
+}
+class com.example.spredicts.RegisterFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+- EditText mFullName
+- TextView Registertv
+- Button Registerb
+- FirebaseAuth mAuth
++ <<Create>> RegisterFragment()
++ {static} RegisterFragment newInstance(String,String)
++ void onCreate(Bundle)
+- void setContentView(int)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+
+
+android.database.sqlite.SQLiteOpenHelper <|-- com.example.spredicts.DBHelper
+androidx.fragment.app.Fragment <|-- com.example.spredicts.ScoreFragment
+androidx.fragment.app.Fragment <|-- com.example.spredicts.HomeFragment
+com.example.spredicts.Adapter <|-- com.example.spredicts.MatchAdapterFinished
+com.example.spredicts.MatchAdapterFinished +.. com.example.spredicts.MatchAdapterFinished.MatchHolder
+com.example.spredicts.ViewHolder <|-- com.example.spredicts.MatchAdapterFinished.MatchHolder
+com.example.spredicts.Adapter <|-- com.example.spredicts.MatchAdapterScheduled
+com.example.spredicts.MatchAdapterScheduled +.. com.example.spredicts.MatchAdapterScheduled.MatchHolder
+com.example.spredicts.ViewHolder <|-- com.example.spredicts.MatchAdapterScheduled.MatchHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.spredicts.MainActivity
+com.example.spredicts.MainActivity +.. com.example.spredicts.MainActivity.AuthenticationPagerAdapter
+com.example.spredicts.FragmentPagerAdapter <|-- com.example.spredicts.MainActivity.AuthenticationPagerAdapter
+androidx.fragment.app.Fragment <|-- com.example.spredicts.LoginFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.spredicts.MainActivity2
+androidx.fragment.app.Fragment <|-- com.example.spredicts.RegisterFragment
+@enduml
